@@ -1,0 +1,5 @@
+v_adv: 1.0            # Advection velocity
+n_x: 20               # Number of cells
+t_max: 0.5            # Maximum time
+dt: 0.1               # Time step
+ncycle_out: 1         # Number of cycles between outputs
