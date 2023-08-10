@@ -2,4 +2,5 @@
 
 members = [
     "section_1/bad_upwind",
+    "section_2/linear_hyperbolic",
 ]

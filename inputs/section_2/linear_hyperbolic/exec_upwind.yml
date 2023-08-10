@@ -1,0 +1,4 @@
+n_x: 20               # Number of cells
+step_max: 6           # Maximum number of time steps
+n_cfl: 0.5            # CFL number
+ncycle_out: 2         # Number of cycles between outputs

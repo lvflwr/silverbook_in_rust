@@ -1,0 +1,5 @@
+n_x: 20               # Number of cells
+step_max: 3           # Maximum number of time steps
+n_cfl: 1.0            # CFL number
+lambda: 0.5           # Weighting factor in differencing scheme
+ncycle_out: 1         # Number of cycles between outputs
