@@ -38,6 +38,8 @@ cargo run -p package_name --bin binary_crate_name
 cargo run -p bad_upwind --bin exec_good_upwind
 ```
 
+The binary crate names correspond to the file names under `./section_*/package_name/src/bin/*`.
+
 The output files are generated under `./outputs/section_*/package_name/*`.
 
 You can change the input parameters by editing the input files under `./inputs/section_*/package_name/*`.
@@ -69,15 +71,14 @@ If you want an overview of the sample code, including formulations, schemes, etc
 The documentation also includes the input and output formats for executing the sample code.
 
 ### Generate and see the documentation
-Run the following command.
+Run the following commands.
 ```shell
-cargo doc --no-deps --open
+cargo clean --doc
+cargo doc -p package_name --no-deps --open
 ```
 
 You can see the documentation in your browser.
 
 
 ## License
-The MIT license.
-
-See [LICENSE](LICENSE) for details.
+This repository is licensed under the MIT license ([LICENSE](LICENSE)).
