@@ -32,12 +32,13 @@ use std::io::{Error, Write};
 ///
 /// # Examples
 /// ```
+/// use ndarray::prelude::*;
 /// use linear_hyperbolic::output;
 ///
 /// let mut outputstream: Vec<u8> = Vec::new();
 /// let step = 3;
-/// let x = ndarray::array![-1.0, 0.0, 1.0];
-/// let u = ndarray::array![0.0, 1.0, 2.0];
+/// let x = array![-1.0, 0.0, 1.0];
+/// let u = array![0.0, 1.0, 2.0];
 /// output::output(&mut outputstream, step, &x, &u).unwrap();
 ///
 /// let output_expected = "\

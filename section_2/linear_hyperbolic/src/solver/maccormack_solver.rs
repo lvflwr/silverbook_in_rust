@@ -109,8 +109,11 @@ impl Solver for MaccormackSolver {
 
 /// Parameters for creating a new `MaccormackSolver` instance.
 pub struct MaccormackSolverNewParams {
+    /// Initial value of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
 }
 

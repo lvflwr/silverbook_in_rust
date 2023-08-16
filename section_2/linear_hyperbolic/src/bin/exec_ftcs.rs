@@ -3,7 +3,7 @@
 //! # Formulation
 //! The transport equation is given by
 //! ```math
-//! \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0 (x \in [-1, 1])),
+//! \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0 (x \in [-1, 1]),
 //! ```
 //! where `u` is the transported quantity and `c` (`> 0`) is the advection velocity.
 //!

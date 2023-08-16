@@ -92,8 +92,11 @@ impl Solver for LeapfrogSolver {
 
 /// Parameters for creating a new `LeapfrogSolver` instance.
 pub struct LeapfrogSolverNewParams {
+    /// Initial value of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
 }
 

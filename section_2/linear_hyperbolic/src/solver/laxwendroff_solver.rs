@@ -117,8 +117,11 @@ impl Solver for LaxwendroffSolver {
 
 /// Parameters for creating a new `LaxwendroffSolver` instance.
 pub struct LaxwendroffSolverNewParams {
+    /// Initial value of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
 }
 

@@ -3,6 +3,7 @@
 //! Section 2.2 of the book introduces several schemes for the linear wave equations and discusses the stability of each.
 //!
 //! All of the schemes mentioned in the book are implemented in this crate.
+//!
 //! Using this crate, you can actually compute and see how the dissipative and dispersive errors arise for each scheme.
 
 pub mod input;

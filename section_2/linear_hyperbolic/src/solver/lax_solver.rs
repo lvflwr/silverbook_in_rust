@@ -89,8 +89,11 @@ impl Solver for LaxSolver {
 
 /// Parameters for creating a new `LaxSolver` instance.
 pub struct LaxSolverNewParams {
+    /// Initial value of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
 }
 

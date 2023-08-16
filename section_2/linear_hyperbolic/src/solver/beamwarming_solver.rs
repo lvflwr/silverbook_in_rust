@@ -6,7 +6,7 @@
 //! -\frac{\nu}{2} \lambda u_{j-1}^{n+1} + u_j^{n+1} + \frac{\nu}{2} \lambda u_{j+1}^{n+1} =
 //! \frac{\nu}{2} (1 - \lambda) u_{j-1}^n + u_j^n - \frac{\nu}{2} (1 - \lambda) u_{j+1}^n,
 //! ```
-//! where `\nu = c \frac{\Delta t}{\Delta x}` and `\lambda \in (0, 1)` is the weighting factor.
+//! where `\nu = c \frac{\Delta t}{\Delta x}` and `\lambda \in [0, 1]` is the weighting factor.
 //!
 //! The Beam-Warming method is equivalent to the Crank-Nicolson method when `\lambda = 0.5`,
 //! explicit euler method when `\lambda = 0` and implicit euler method when `\lambda = 1`.
@@ -132,9 +132,13 @@ impl Solver for BeamwarmingSolver {
 
 /// Parameters for creating a new `BeamwarmingSolver` instance.
 pub struct BeamwarmingSolverNewParams {
+    /// Initial values of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
+    /// Weighting factor in differencing scheme.
     pub lambda: f64,
 }
 

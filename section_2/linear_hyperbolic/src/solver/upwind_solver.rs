@@ -88,8 +88,11 @@ impl Solver for UpwindSolver {
 
 /// Parameters for creating a new `UpwindSolver` instance.
 pub struct UpwindSolverNewParams {
+    /// Initial value of `u`.
     pub u: Array1<f64>,
+    /// Maximum number of time steps.
     pub step_max: usize,
+    /// CFL number.
     pub n_cfl: f64,
 }
 
