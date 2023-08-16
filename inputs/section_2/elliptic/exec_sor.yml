@@ -1,0 +1,4 @@
+n_x: 20               # Number of grids in x direction
+n_y: 20               # Number of grids in y direction
+n_iter_max: 10000     # Maximum number of iterations
+omega: 1.5            # Relaxation parameter
