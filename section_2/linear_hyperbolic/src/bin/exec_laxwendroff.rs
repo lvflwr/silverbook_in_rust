@@ -1,4 +1,4 @@
-//! Solve the transport equation by the [LaxwendroffSolver].
+//! Solve the transport equation by the [linear_hyperbolic::solver::laxwendroff_solver].
 //!
 //! # Formulation
 //! The transport equation is given by
@@ -12,10 +12,10 @@
 //! u(x, 0) = 0 (x \ge 0), u(x, 0) = 1 (x < 0).
 //! ```
 //!
-//! For the boundary condition, see [LaxwendroffSolver].
+//! For the boundary condition, see [linear_hyperbolic::solver::laxwendroff_solver].
 //!
 //! # Scheme
-//! See [LaxwendroffSolver].
+//! See [linear_hyperbolic::solver::laxwendroff_solver].
 //!
 //! # Input Format
 //! Input should be a YAML file in the following format:

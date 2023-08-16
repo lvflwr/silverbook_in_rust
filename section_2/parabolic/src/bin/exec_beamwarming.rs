@@ -1,4 +1,4 @@
-//! Solve the diffusion equation by the [BeamwarmingSolver].
+//! Solve the diffusion equation by the [parabolic::solver::beamwarming_solver].
 //!
 //! # Formulation
 //! The diffusion equation is given by
@@ -12,10 +12,10 @@
 //! u(x, 0) = -x + 1 (x \ge 0), u(x, 0) = x + 1 (x < 0).
 //! ```
 //!
-//! For the boundary condition, see [BeamwarmingSolver].
+//! For the boundary condition, see [parabolic::solver::beamwarming_solver].
 //!
 //! # Scheme
-//! See [BeamwarmingSolver].
+//! See [parabolic::solver::beamwarming_solver].
 //!
 //! # Input Format
 //! Input should be a YAML file in the following format:

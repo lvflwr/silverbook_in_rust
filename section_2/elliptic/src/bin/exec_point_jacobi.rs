@@ -1,4 +1,4 @@
-//! Solve the diffusion equation by the [PointJacobiSolver].
+//! Solve the diffusion equation by the [elliptic::solver::point_jacobi_solver].
 //!
 //! # Formulation
 //! The diffusion equation is given by
@@ -11,10 +11,10 @@
 //! ```math
 //! u(x, y) = 1 (y = y_{+}), u(x, y) = 0 (x = x_{\pm} or y = y_{-}).
 //! ```
-//! See also [PointJacobiSolver] for the boundary condition.
+//! See also [elliptic::solver::point_jacobi_solver] for the boundary condition.
 //!
 //! # Scheme
-//! See [PointJacobiSolver].
+//! See [elliptic::solver::point_jacobi_solver].
 //!
 //! # Input Format
 //! Input should be a YAML file in the following format:

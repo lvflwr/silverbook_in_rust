@@ -1,4 +1,4 @@
-//! Solve the diffusion equation by the [SorSolver].
+//! Solve the diffusion equation by the [elliptic::solver::sor_solver].
 //!
 //! # Formulation
 //! The diffusion equation is given by
@@ -11,10 +11,10 @@
 //! ```math
 //! u(x, y) = 1 (y = y_{+}), u(x, y) = 0 (x = x_{\pm} or y = y_{-}).
 //! ```
-//! See also [SorSolver] for the boundary condition.
+//! See also [elliptic::solver::sor_solver] for the boundary condition.
 //!
 //! # Scheme
-//! See [SorSolver].
+//! See [elliptic::solver::sor_solver].
 //!
 //! # Input Format
 //! Input should be a YAML file in the following format:

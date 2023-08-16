@@ -1,4 +1,4 @@
-//! Solve the transport equation by the [FtcsSolver].
+//! Solve the transport equation by the [linear_hyperbolic::solver::ftcs_solver].
 //!
 //! # Formulation
 //! The transport equation is given by
@@ -12,10 +12,10 @@
 //! u(x, 0) = 0 (x \ge 0), u(x, 0) = 1 (x < 0).
 //! ```
 //!
-//! For the boundary condition, see [FtcsSolver].
+//! For the boundary condition, see [linear_hyperbolic::solver::ftcs_solver].
 //!
 //! # Scheme
-//! See [FtcsSolver].
+//! See [linear_hyperbolic::solver::ftcs_solver].
 //!
 //! # Input Format
 //! Input should be a YAML file in the following format:
