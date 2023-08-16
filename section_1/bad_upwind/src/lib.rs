@@ -6,89 +6,36 @@
 //! We define the upwind method that uses information on the upwind side of the advection as a good upwind method and the one
 //! that uses information on the downwind side as a bad upwind method.
 //!
-//! And we calculate the solution of the transport equation by the good and bad upwind methods, respectively, to see the difference
-//! in the results.
+//! Both the good and bad upwind methods are implemented in this crate.
 //!
-//! # Formulation and Scheme
-//! See [run].
-//!
-//! # Input Format
-//! See [input::read_input_params].
-//!
-//! # Output Format
-//! See [output::output].
+//! Using this crate, you can actually compute and see the difference between the good and bad upwind methods.
 
 pub mod input;
 pub mod output;
 pub mod upwind_solver;
 
-use input::InputParams;
 use ndarray::prelude::*;
 use std::error::Error;
 use std::io::Write;
-use upwind_solver::DiffMethod;
 use upwind_solver::UpwindSolver;
 
-/// Solve the transport equation by the upwind method.
-///
-/// # Formulation
-/// The transport equation is given by
-/// ```math
-/// \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0 (x \in [-1, 1])),
-/// ```
-/// where `u` is the transported quantity and `c` (`> 0`) is the advection velocity.
-///
-/// The initial condition is given by
-/// ```math
-/// u(x, 0) = 0 (x \ge 0), u(x, 0) = 1 (x < 0).
-/// ```
-///
-/// The boundary condition is given by
-/// ```math
-/// u(-1, t) = 1, u(1, t) = 0.
-/// ```
-///
-/// # Scheme
-/// The upwind method is used to solve the transport equation.
-///
-/// The good upwind method, in this case, [DiffMethod::Forward], is given by
-/// ```math
-/// u_j^{n+1} = u_j^n -  c \frac{\Delta t}{\Delta x} (u_j^n - u_{j-1}^n).
-/// ```
-///
-/// The bad upwind method, in this case, [DiffMethod::Forward], is given by
-/// ```math
-/// u_j^{n+1} = u_j^n -  c \frac{\Delta t}{\Delta x} (u_{j+1}^n - u_{j}^n).
-/// ```
+/// Run the solver and output the results.
 pub fn run(
-    input_params: &InputParams,
-    diff_method: DiffMethod,
+    x: &Array1<f64>,
+    upwind_solver: &mut UpwindSolver,
     outputstream: &mut impl Write,
+    ncycle_out: usize,
 ) -> Result<(), Box<dyn Error>> {
-    // setup coordinates
-    let x: Array1<f64> = Array1::linspace(-1.0, 1.0, input_params.n_x + 1);
-    let dx = x[1] - x[0];
-
-    // initialize the upwind solver
-    let mut upwind_solver = UpwindSolver::new(
-        x.map(|x| if *x < 0.0 { 1.0 } else { 0.0 }),
-        input_params.v_adv,
-        dx,
-        input_params.dt,
-        input_params.t_max,
-        diff_method,
-    );
-
     // calculate and output
-    output::output(outputstream, 0.0, &x, upwind_solver.borrow_u())?;
+    output::output(outputstream, 0.0, x, upwind_solver.borrow_u())?;
     while !upwind_solver.is_completed() {
         upwind_solver.integrate()?;
 
-        if upwind_solver.get_step() % input_params.ncycle_out == 0 {
+        if upwind_solver.get_step() % ncycle_out == 0 {
             output::output(
                 outputstream,
                 upwind_solver.get_t(),
-                &x,
+                x,
                 upwind_solver.borrow_u(),
             )?;
         }
@@ -101,10 +48,11 @@ pub fn run(
 mod tests {
     use super::*;
     use input::InputParams;
+    use upwind_solver::DiffMethod;
 
     #[test]
     fn fn_run_works_with_good_upwind_method() {
-        // setup input parameters and output stream, and execute run()
+        // setup input parameters
         let input_params = InputParams {
             v_adv: 1.0,
             n_x: 20,
@@ -112,8 +60,31 @@ mod tests {
             dt: 0.1,
             ncycle_out: 5,
         };
+
+        // setup output stream
         let mut outputstream: Vec<u8> = Vec::new();
-        run(&input_params, DiffMethod::Backward, &mut outputstream).unwrap();
+
+        // setup coordinates
+        let x: Array1<f64> = Array1::linspace(-1.0, 1.0, input_params.n_x + 1);
+
+        // initialize the upwind solver
+        let mut upwind_solver = UpwindSolver::new(
+            x.map(|x| if *x < 0.0 { 1.0 } else { 0.0 }),
+            input_params.v_adv,
+            x[1] - x[0],
+            input_params.dt,
+            input_params.t_max,
+            DiffMethod::Backward,
+        );
+
+        // execute run()
+        run(
+            &x,
+            &mut upwind_solver,
+            &mut outputstream,
+            input_params.ncycle_out,
+        )
+        .unwrap();
 
         // check if the output is correct
         let output_expected = "\
@@ -169,7 +140,7 @@ mod tests {
 
     #[test]
     fn fn_run_works_with_bad_upwind_method() {
-        // setup input parameters and output stream, and execute run()
+        // setup input parameters
         let input_params = InputParams {
             v_adv: 1.0,
             n_x: 20,
@@ -177,8 +148,31 @@ mod tests {
             dt: 0.1,
             ncycle_out: 5,
         };
+
+        // setup output stream
         let mut outputstream: Vec<u8> = Vec::new();
-        run(&input_params, DiffMethod::Forward, &mut outputstream).unwrap();
+
+        // setup coordinates
+        let x: Array1<f64> = Array1::linspace(-1.0, 1.0, input_params.n_x + 1);
+
+        // initialize the upwind solver
+        let mut upwind_solver = UpwindSolver::new(
+            x.map(|x| if *x < 0.0 { 1.0 } else { 0.0 }),
+            input_params.v_adv,
+            x[1] - x[0],
+            input_params.dt,
+            input_params.t_max,
+            DiffMethod::Forward,
+        );
+
+        // execute run()
+        run(
+            &x,
+            &mut upwind_solver,
+            &mut outputstream,
+            input_params.ncycle_out,
+        )
+        .unwrap();
 
         // check if the output is correct
         let output_expected = "\

@@ -32,11 +32,14 @@ use std::io::{Error, Write};
 ///
 /// # Examples
 /// ```
+/// use ndarray::prelude::*;
+/// use bad_upwind::output;
+///
 /// let t = 3.0;
-/// let x = ndarray::array![-1.0, 0.0, 1.0];
-/// let u = ndarray::array![0.0, 1.0, 2.0];
+/// let x = array![-1.0, 0.0, 1.0];
+/// let u = array![0.0, 1.0, 2.0];
 /// let mut outputstream: Vec<u8> = Vec::new();
-/// bad_upwind::output::output(&mut outputstream, t, &x, &u).unwrap();
+/// output::output(&mut outputstream, t, &x, &u).unwrap();
 ///
 /// let output_expected = "\
 /// 3.00 -1.0000000000 0.0000000000

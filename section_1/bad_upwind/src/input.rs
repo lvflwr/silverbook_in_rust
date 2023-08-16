@@ -57,7 +57,7 @@ impl InputParams {
 ///
 /// # Examples
 /// ```
-/// use bad_upwind::input::InputParams;
+/// use bad_upwind::input::{self, InputParams};
 ///
 /// let input_params = InputParams {
 ///   v_adv: 1.0,
@@ -67,7 +67,7 @@ impl InputParams {
 ///   ncycle_out: 1,
 /// };
 /// let input_str = serde_yaml::to_string(&input_params).unwrap();
-/// let input_params_read = bad_upwind::input::read_input_params(&mut input_str.as_bytes()).unwrap();
+/// let input_params_read = input::read_input_params(&mut input_str.as_bytes()).unwrap();
 ///
 /// assert_eq!(input_params_read, input_params);
 /// ```

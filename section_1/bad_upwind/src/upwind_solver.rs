@@ -1,4 +1,13 @@
 //! Solver for the transport equation using upwind method.
+//!
+//! # Scheme
+//! See [DiffMethod].
+//!
+//! # Boundary Condition
+//! The boundary condition is fixed as
+//! ```math
+//! u(x_{\pm}, t) = u(x_{\pm}, 0).
+//! ```
 
 use ndarray::prelude::*;
 
@@ -70,7 +79,7 @@ impl UpwindSolver {
 
         self.u = self
             .diff_method
-            .calculate_next_u(&self.u, self.v_adv, self.dx, self.dt);
+            .calculate_u_next(&self.u, self.v_adv, self.dx, self.dt);
         self.t += self.dt;
         self.step += 1;
 
@@ -86,20 +95,30 @@ impl UpwindSolver {
 #[derive(Debug)]
 pub enum DiffMethod {
     /// Forward difference method.
+    ///
+    /// This method is given by
+    /// ```math
+    /// u_j^{n+1} = u_j^n -  c \frac{\Delta t}{\Delta x} (u_{j+1}^n - u_{j}^n).
+    /// ```
     Forward,
     /// Backward difference method.
+    ///
+    /// This method is given by
+    /// ```math
+    /// u_j^{n+1} = u_j^n -  c \frac{\Delta t}{\Delta x} (u_j^n - u_{j-1}^n).
+    /// ```
     Backward,
 }
 
 impl DiffMethod {
-    fn calculate_next_u(&self, u: &Array1<f64>, v_adv: f64, dx: f64, dt: f64) -> Array1<f64> {
+    fn calculate_u_next(&self, u: &Array1<f64>, v_adv: f64, dx: f64, dt: f64) -> Array1<f64> {
         match self {
-            DiffMethod::Forward => self.calculate_next_u_by_forward(u, v_adv, dx, dt),
-            DiffMethod::Backward => self.calculate_next_u_by_backward(u, v_adv, dx, dt),
+            DiffMethod::Forward => self.calculate_u_next_by_forward(u, v_adv, dx, dt),
+            DiffMethod::Backward => self.calculate_u_next_by_backward(u, v_adv, dx, dt),
         }
     }
 
-    fn calculate_next_u_by_forward(
+    fn calculate_u_next_by_forward(
         &self,
         u: &Array1<f64>,
         v_adv: f64,
@@ -117,7 +136,7 @@ impl DiffMethod {
             .collect()
     }
 
-    fn calculate_next_u_by_backward(
+    fn calculate_u_next_by_backward(
         &self,
         u: &Array1<f64>,
         v_adv: f64,
