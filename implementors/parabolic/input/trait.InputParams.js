@@ -1,0 +1,4 @@
+(function() {var implementors = {
+"solve_diffusion_eq_by_beamwarming_method":[["impl <a class=\"trait\" href=\"parabolic/input/trait.InputParams.html\" title=\"trait parabolic::input::InputParams\">InputParams</a> for <a class=\"struct\" href=\"solve_diffusion_eq_by_beamwarming_method/struct.ExecBeamwarmingInputParams.html\" title=\"struct solve_diffusion_eq_by_beamwarming_method::ExecBeamwarmingInputParams\">ExecBeamwarmingInputParams</a>"]],
+"solve_diffusion_eq_by_ftcs_method":[["impl <a class=\"trait\" href=\"parabolic/input/trait.InputParams.html\" title=\"trait parabolic::input::InputParams\">InputParams</a> for <a class=\"struct\" href=\"solve_diffusion_eq_by_ftcs_method/struct.ExecFtcsInputParams.html\" title=\"struct solve_diffusion_eq_by_ftcs_method::ExecFtcsInputParams\">ExecFtcsInputParams</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

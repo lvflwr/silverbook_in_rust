@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["point_jacobi_solver","sor_solver"],"trait":["NewParams","Solver"]};

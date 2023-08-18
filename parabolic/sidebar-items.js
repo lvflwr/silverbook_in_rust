@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["run"],"mod":["input","math","output","solver"]};

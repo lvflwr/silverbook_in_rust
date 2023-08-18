@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["run"],"mod":["input","output","upwind_solver"]};

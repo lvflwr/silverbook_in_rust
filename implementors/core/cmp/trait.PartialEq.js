@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"bad_upwind":[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.71.1/core/cmp/trait.PartialEq.html\" title=\"trait core::cmp::PartialEq\">PartialEq</a>&lt;<a class=\"struct\" href=\"bad_upwind/input/struct.InputParams.html\" title=\"struct bad_upwind::input::InputParams\">InputParams</a>&gt; for <a class=\"struct\" href=\"bad_upwind/input/struct.InputParams.html\" title=\"struct bad_upwind::input::InputParams\">InputParams</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
