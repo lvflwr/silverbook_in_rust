@@ -12,7 +12,7 @@ This repository contains the following:
 - Input files to run the code (under `./inputs/section_*/package_name/*`),
 - Scripts to visualize the results of the code (under `./plots/section_*/package_name/*`).
 
-Each chunk of code is implemented as a single package.
+The code is organized into one package per topic.
 
 `section_*` (e.g., `section_1`) in the path corresponds to the chapter number of the book.
 
@@ -36,21 +36,21 @@ cd silverbook_in_rust
 ### Run the sample code
 Run the following command.
 ```shell
-cargo run -p package_name --bin binary_crate_name
+cargo run --example example_name
 
 # e.g.
-cargo run -p bad_upwind --bin exec_good_upwind
+cargo run --example solve_transport_eq_by_good_upwind_method
 ```
 
-The binary crate names correspond to the file names under `./section_*/package_name/src/bin/*`.
+The `example_name` corresponds to a file name under `./section_*/package_name/examples/*`.
 
-The output files are generated under `./outputs/section_*/package_name/*`.
+The output files are generated under `./outputs/section_*/package_name/example_name/*`.
 
-You can change the input parameters by editing the input files under `./inputs/section_*/package_name/*`.
+You can change the input parameters by editing the input files under `./inputs/section_*/package_name/example_name/*`.
 
 
 ## Visualization
-We provide brief scripts to visualize the results.
+You can use some scripts to visualize the results.
 
 ### Install gnuplot
 In order to visualize the results, you need to install gnuplot.
@@ -60,13 +60,13 @@ See, for example, [the official manuals](http://www.gnuplot.info/download.html).
 ### Run the gnuplot scripts
 Run the following command to generate the figures.
 ```shell
-gnuplot plots/section_*/package_name/script_name.gp
+gnuplot plots/section_*/package_name/example_name/script_name.gp
 
 # e.g.
-gnuplot plots/section_1/bad_upwind/exec_good_upwind.gp
+gnuplot plots/section_1/bad_upwind/solve_transport_eq_by_good_upwind_method/plot_solution.gp
 ```
 
-The figures are generated under `./outputs/section_*/package_name/*`.
+The figures are generated under `./outputs/section_*/package_name/example_name/*`.
 
 
 ## Documentation
@@ -77,8 +77,7 @@ The documentation also includes the input and output formats for executing the s
 ### Generate and see the documentation
 Run the following commands.
 ```shell
-cargo clean --doc
-cargo doc -p package_name --no-deps --open
+cargo doc --examples --no-deps --open
 ```
 
 You can see the documentation in your browser.
