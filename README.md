@@ -1,4 +1,8 @@
 # silverbook_in_rust
+[![CI](https://github.com/lvflwr/silverbook_in_rust/actions/workflows/ci.yml/badge.svg)](https://github.com/lvflwr/silverbook_in_rust/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/lvflwr/silverbook_in_rust/graph/badge.svg?token=JRFZFVPQST)](https://codecov.io/gh/lvflwr/silverbook_in_rust)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A sample implementation in Rust of "Numerical Methods for Computational Fluid Dynamics" by Kozo Fujii (藤井孝蔵著『流体力学の数値計算法』), commonly known as the Silver Book (銀本).
 
 
@@ -78,7 +82,3 @@ cargo doc -p package_name --no-deps --open
 ```
 
 You can see the documentation in your browser.
-
-
-## License
-This repository is licensed under the MIT license ([LICENSE](LICENSE)).
