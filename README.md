@@ -70,14 +70,6 @@ The figures are generated under `./outputs/section_*/package_name/example_name/*
 
 
 ## Documentation
-If you want an overview of the sample code, including formulations, schemes, etc., you can refer to the documentation.
+You can refer to the documentation [here](https://lvflwr.github.io/silverbook_in_rust/bad_upwind/index.html).
 
-The documentation also includes the input and output formats for executing the sample code.
-
-### Generate and see the documentation
-Run the following commands.
-```shell
-cargo doc --examples --no-deps --open
-```
-
-You can see the documentation in your browser.
+The documation includes the formulation, scheme, initial and boudary conditions, input and output formats.

@@ -64,3 +64,11 @@ jobs:
     uses: ./.github/workflows/coverage.yml
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  pages:
+    if: github.ref == 'refs/heads/main'
+    needs: [build, lint, test]
+    permissions:
+      contents: write
+
+    uses: ./.github/workflows/pages.yml
