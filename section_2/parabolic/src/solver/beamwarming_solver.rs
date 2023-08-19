@@ -176,7 +176,6 @@ mod tests {
         beamwarming_solver.integrate().unwrap();
 
         // check if u, t and step are correctly updated
-        println!("{:?}", beamwarming_solver.u);
         let u_exact = array![0.0, 0.46969696970, 0.6565656566, 0.46969696970, 0.0];
         let is_u_correctly_updated = (beamwarming_solver.u - u_exact)
             .iter()
