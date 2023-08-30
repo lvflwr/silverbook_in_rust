@@ -72,4 +72,4 @@ The figures are generated under `./outputs/section_*/package_name/example_name/*
 ## Documentation
 You can refer to the documentation [here](https://lvflwr.github.io/silverbook_in_rust/bad_upwind/index.html).
 
-The documation includes the formulation, scheme, initial and boudary conditions, input and output formats.
+The documation includes the formulation, scheme, initial and boudary conditions and input and output formats.
